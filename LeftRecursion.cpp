@@ -73,3 +73,16 @@ int main()
 
     return 0;
 }
+
+
+/* You can check these :
+    Input: E->E+T|T
+    Output: E->TE'
+            E'->+TE'|empty
+    Input: A->Ac|Aad|bd|empty
+    Output: A->bdA'|emptyA'
+            A'->cA'|adA'|empty
+    Input: E->E+T|E-T|+T|-T|T
+    Output: E->+TE'|-TE'|TE'
+            E'->+TE'|-TE'|empty
+*/
