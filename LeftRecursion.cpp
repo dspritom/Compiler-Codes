@@ -12,6 +12,7 @@ int main()
 
     string temp = "";
     char start_var = productions[0];
+    bool check_rec = false;
 
     for (int i = 3; i < productions.length(); i++)
     {
@@ -20,6 +21,7 @@ int main()
             if (temp[0] == start_var)
             {
                 recursive.push_back(temp);
+                check_rec = true;
                 temp = "";
             }
             else
@@ -38,6 +40,7 @@ int main()
         if (temp[0] == start_var)
         {
             recursive.push_back(temp);
+            check_rec = true;
             temp = "";
         }
         else
@@ -52,27 +55,33 @@ int main()
         temp = "";
     }
 
-    cout << start_var << "->";
-    for (int i = 0; i < non_recursive.size()-1; i++)
+    if (check_rec == false)
+        cout << "This Grammer is not recursive" << endl;
+    else
     {
-        cout << non_recursive[i] << start_var << "'" << "|";
-    }
-    cout << non_recursive[non_recursive.size()-1] << start_var << "'" << endl;
-    cout << start_var << "'->";
-    for (int i = 0; i < recursive.size(); i++)
-    {
-        string alpha = "";
-        for (int j = 1; j < recursive[i].size(); j++)
+        cout << start_var << "->";
+        for (int i = 0; i < non_recursive.size()-1; i++)
         {
-            alpha += recursive[i][j];
+            cout << non_recursive[i] << start_var << "'" << "|";
         }
+        cout << non_recursive[non_recursive.size()-1] << start_var << "'" << endl;
+        cout << start_var << "'->";
+        for (int i = 0; i < recursive.size(); i++)
+        {
+            string alpha = "";
+            for (int j = 1; j < recursive[i].size(); j++)
+            {
+                alpha += recursive[i][j];
+            }
 
-        cout << alpha << start_var << "'|";
+            cout << alpha << start_var << "'|";
+        }
+        cout << "empty" << endl;
     }
-    cout << "empty" << endl;
 
     return 0;
 }
+
 
 
 /* You can check these :
